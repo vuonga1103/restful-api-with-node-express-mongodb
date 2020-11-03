@@ -12,7 +12,7 @@ router.get("/", (req, res) => {
 
 router.post("/", (req, res) => {
   // need to get info from req.body
-  // need a package to convert req.body to json for us
+  // need bodyparser package to convert req.body to json for us (npm i body-parser)
   console.log(req.body);
 });
 

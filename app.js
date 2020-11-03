@@ -7,7 +7,13 @@ const app = express();
 // import mongoose
 const mongoose = require("mongoose");
 
+// import body-parser
+const bodyParser = require("body-parser");
+
 require("dotenv/config");
+
+// create a middleware to ensure that when we hit any request, the body parser will run
+app.use(bodyParser.json());
 
 // import routes
 const postsRoute = require("./routes/posts");
