@@ -1,4 +1,5 @@
 const express = require("express");
+const { restart } = require("nodemon");
 
 const router = express.Router();
 
@@ -10,23 +11,20 @@ router.get("/", (req, res) => {
   res.send("We are on posts");
 });
 
-router.post("/", (req, res) => {
+router.post("/", async (req, res) => {
   // creating new post with model Post
   const post = new Post({
     title: req.body.title,
     description: req.body.description,
   });
 
-  // saving to db
-  post
-    .save()
-    .then((data) => {
-      res.status(200).json(data); //this puts the data on the screen after we post
-    })
-    .catch((err) => {
-      // creating an error message
-      res.json({ message: err });
-    });
+  try {
+    // saving to db
+    const savedPost = await post.save();
+    res.json(savedPost);
+  } catch (err) {
+    res.json({ message: err });
+  }
 });
 
 module.exports = router;
