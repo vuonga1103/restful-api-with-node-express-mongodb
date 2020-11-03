@@ -9,20 +9,17 @@ const mongoose = require("mongoose");
 
 require("dotenv/config");
 
-// MIDDLEWARES- aka fns that execute when a specific route is being hit
-app.use("/posts", () => {
-  console.log("This is a middleware running");
-});
+// import routes
+const postsRoute = require("./routes/posts");
+
+// create a middleware, specifying that whenever user goes to /posts, we should run postsRoute
+app.use("/posts", postsRoute);
 
 // ROUTES
 // sending a response to a get request to root route
 // first param is route
 app.get("/", (req, res) => {
   res.send("We are on home");
-});
-
-app.get("/posts", (req, res) => {
-  res.send("We are on posts");
 });
 
 // connect to DB
