@@ -1,24 +1,36 @@
 // import express package (that was previously installed)
-const express = require('express');
+const express = require("express");
 
 // execute express
 const app = express();
 
+// import mongoose
+const mongoose = require("mongoose");
+
+require("dotenv/config");
+
 // MIDDLEWARES- aka fns that execute when a specific route is being hit
-app.use('/posts', () => {
-  console.log('This is a middleware running')
-})
+app.use("/posts", () => {
+  console.log("This is a middleware running");
+});
 
 // ROUTES
-  // sending a response to a get request to root route
-  // first param is route
+// sending a response to a get request to root route
+// first param is route
 app.get("/", (req, res) => {
-  res.send('We are on home');
-})
+  res.send("We are on home");
+});
 
 app.get("/posts", (req, res) => {
-  res.send('We are on posts');
-})
+  res.send("We are on posts");
+});
+
+// connect to DB
+mongoose.connect(
+  process.env.DB_CONNECTION,
+  { useNewUrlParser: true, useUnifiedTopology: true },
+  () => console.log("connected to DB")
+);
 
 // start listening to the server
 app.listen(3000);
