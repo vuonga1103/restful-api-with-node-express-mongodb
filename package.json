@@ -1,0 +1,24 @@
+{
+  "name": "restful-api-with-node-express-mongodb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuonga1103/restful-api-with-node-express-mongodb.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vuonga1103/restful-api-with-node-express-mongodb/issues"
+  },
+  "homepage": "https://github.com/vuonga1103/restful-api-with-node-express-mongodb#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.6"
+  }
+}
