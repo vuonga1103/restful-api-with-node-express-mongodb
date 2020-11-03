@@ -10,10 +10,16 @@ const mongoose = require("mongoose");
 // import body-parser
 const bodyParser = require("body-parser");
 
+// import cors
+const cors = require("cors");
+
 require("dotenv/config");
 
 // create a middleware to ensure that when we hit any request, the body parser will run
 app.use(bodyParser.json());
+
+// overcoming cors issue
+app.use(cors());
 
 // import routes
 const postsRoute = require("./routes/posts");
