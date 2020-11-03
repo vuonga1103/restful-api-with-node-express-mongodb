@@ -23,13 +23,15 @@ app.get("/", (req, res) => {
 });
 
 // connect to DB
-mongoose.connect(
-  process.env.DB_CONNECTION,
-  { useNewUrlParser: true, useUnifiedTopology: true },
-  () => console.log("connected to DB")
-);
+mongoose.connect(process.env.DB_CONNECTION, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+const db = mongoose.connection;
+db.on("error", (error) => console.error(error));
+db.once("open", () => console.log("connected to database"));
 
 // start listening to the server
-app.listen(3000);
+app.listen(27017);
 
 // to run this, use "npm start" will run "nodeman app.js"
